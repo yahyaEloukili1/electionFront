@@ -64,6 +64,34 @@ export class ElectionsComponent implements OnInit {
     this.somPourcentage = ((this.somenmbMosa /this.someInscrits)*100).toFixed(2);
   
     })
+    this.rnpService.getResourceAllByProjection("communes","projection=inlinePartie").subscribe(data=>{
+      this.communes = data['_embedded'].communes
+    
+    })
+  }
+  onCommuneChange(event) {
+    this.idchanged = event.target.value
+     this.id = this.idchanged
+     const selectedCommuneId = event.target.value;
+  this.router.navigate(['elections/elections']);
+
+ 
+    
+  }
+  search(){
+    this.rnpService.getResourceByResourceId("elections","Commune",this.idchanged).subscribe(data=>{
+      
+
+      this.elections = data['_embedded'].elections
+      this.communeName = this.elections[0].commune.designation
+      this.communeId = this.elections[0].commune.id
+  
+      console.log(this.elections,"111111111111111111")
+      console.log(this.communeName,"2222222222222222222222é")
+      console.log(this.communeId,"333333333333333333333333333333333333")
+     })
+   
+    
   }
   onEditRNP(p:any){
  

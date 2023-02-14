@@ -154,7 +154,7 @@ export class EditElmarsaElectionComponent implements OnInit {
       console.log(value,'èèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèè')
       this.pdiService.updateResource(this.url,value).subscribe(data=>{
           
-        alert("Mise a jour effectuée avec succès")
+         alert("Mise a jour effectuée avec succès")
       },err=>{
         
       })
@@ -187,7 +187,7 @@ export class EditElmarsaElectionComponent implements OnInit {
       // this.candidat3.nombreVote = value.nb3
       this.pdiService.updateResource(`${this.pdiService.host}/candidats/${this.candidat3.id}`,d3).subscribe(data=>{
          
-        alert("Mise a jour effectuée avec succès")
+        // alert("Mise a jour effectuée avec succès")
       },err=>{
         
       })

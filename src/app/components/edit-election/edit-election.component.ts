@@ -189,7 +189,7 @@ export class EditElectionComponent implements OnInit {
       // this.candidat3.nombreVote = value.nb3
       this.pdiService.updateResource(`${this.pdiService.host}/candidats/${this.candidat3.id}`,d3).subscribe(data=>{
          
-        alert("Mise a jour effectuée avec succès")
+        // alert("Mise a jour effectuée avec succès")
       },err=>{
         
       })
@@ -208,7 +208,7 @@ export class EditElectionComponent implements OnInit {
       this.idchanged3 = event.target.value
     }
     gotoList(){
-      this.router.navigateByUrl('elections/electionElmarsa');
+      this.router.navigateByUrl('elections/elections');
     }
 
 

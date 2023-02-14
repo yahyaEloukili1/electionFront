@@ -14,7 +14,9 @@ const routes: Routes = [{path: "elections/candidats",component: CandidatsCompone
 {path: "elections/editElection/:id",component: EditElectionComponent},
 {path: "elections/electionElmarsa",component: ElectionElmarsaComponent},
 {path: "elections/editElectionElmarsa/:id",component: EditElmarsaElectionComponent},
-{path: "elections/login",component: LoginComponent},];
+{path: "elections/login",component: LoginComponent},
+{path: "elections", redirectTo : "elections/candidats", pathMatch: 'full'},
+{path: "", redirectTo : "elections/candidats", pathMatch: 'full'},];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

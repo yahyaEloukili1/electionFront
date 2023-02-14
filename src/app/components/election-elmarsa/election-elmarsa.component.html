@@ -1,144 +1,69 @@
-<div class="container1" >
+<div class="container1 mt-5" >
   
    
-    <h2 style="text-align: center;"> مرشحو جماعة  {{communeName}}</h2>
+ 
 
-       <!-- <strong><label class="ml-2" style="margin-top: 0.5%;">الجماعة</label></strong>  -->
-        <!-- <select  class="form-control mb-3" [(ngModel)]="communeId" (change)="onCommuneChange($event)">
-      <strong></strong>  <option *ngFor="let commune of communes"  [value]="commune.id">{{ commune.designation }}</option>
-        </select> -->
-        <!-- <a (click)="search()" class="btn btn-primary mr-1"><i class="fa fa-search"></i></a> -->
 
       
       
   <table class="table table-bordered table-sm mt-3" *ngIf="elections">
     <thead style="background-color: #d9d9d9;">
-
-        <tr>
-            <th style="text-align: center;">               
-                Actions
-                 <span style="display: inline-block; width: 5px;"></span>
-                 <i class="fa fa-circle text-primary"></i>
-               </th>
-            <th style="text-align: center;">               
-              Partie
-               <span style="display: inline-block; width: 5px;"></span>
-               <i class="fa fa-circle text-primary"></i>
-             </th>
-            <th style="text-align: center;">               
-                الإنتماء السياسي
-               <span style="display: inline-block; width: 5px;"></span>
-               <i class="fa fa-circle text-primary"></i>
-             </th>
-            <th style="text-align: center;">               
-                الإسم الشخصي و العائلي
-               <span style="display: inline-block; width: 5px;"></span>
-               <i class="fa fa-circle text-primary"></i>
-             </th>
-            <th style="text-align: center;">               
-                المرشح المؤهل
-               <span style="display: inline-block; width: 5px;"></span>
-               <i class="fa fa-circle text-primary"></i>
-             </th>
-            <th style="text-align: center;">               
-                تأكيد مجموع الأصوات
-               <span style="display: inline-block; width: 5px;"></span>
-               <i class="fa fa-circle text-primary"></i>
-             </th>
-            <th style="text-align: center;">               
-                المرشح 3
-               <span style="display: inline-block; width: 5px;"></span>
-               <i class="fa fa-circle text-primary"></i>
-             </th>
-            <th style="text-align: center;">               
-                المرشح 2
-               <span style="display: inline-block; width: 5px;"></span>
-               <i class="fa fa-circle text-primary"></i>
-             </th>
-            <th style="text-align: center;">               
-              1  المرشح 
-               <span style="display: inline-block; width: 5px;"></span>
-               <i class="fa fa-circle text-primary"></i>
-             </th>
-            <th style="text-align: center;">               
-                نسبة المشاركة
-               <span style="display: inline-block; width: 5px;"></span>
-               <i class="fa fa-circle text-primary"></i>
-             </th>
-            <th style="text-align: center;">               
-                الأصوات المعبر عنها
-               <span style="display: inline-block; width: 5px;"></span>
-               <i class="fa fa-circle text-primary"></i>
-             </th>
-            <th style="text-align: center;">               
-                الأوراق الملغات
-               <span style="display: inline-block; width: 5px;"></span>
-               <i class="fa fa-circle text-primary"></i>
-             </th>
-            <th style="text-align: center;">               
-                المصوتين
-               <span style="display: inline-block; width: 5px;"></span>
-               <i class="fa fa-circle text-primary"></i>
-             </th>
-            <th style="text-align: center;">               
-                 المسجلين
-                <span style="display: inline-block; width: 5px;"></span>
-                <i class="fa fa-circle text-primary"></i>
-              </th>
-            <th style="text-align: center;">
-                رمز مكتب التصويت
-                <span style="display: inline-block; width: 5px;"></span>
-                <i class="fa fa-circle text-primary"></i>
-              </th>
-            <th style="text-align: center;">
-                رقم مكتب التصويت
-                <span style="display: inline-block; width: 5px;"></span>
-                <i class="fa fa-circle text-primary"></i>
-              </th>
-            
-          <th style="text-align: center;">
-            الدائرة
-            <span style="display: inline-block; width: 5px;"></span>
-            <i class="fa fa-circle text-primary"></i>
-          </th>
-        
-
-        </tr>
-      </thead>
+      <tr>
+        <th style="text-align: center;">Actions</th>
+        <th style="text-align: center;">عدد المقاعد</th>
+        <th style="text-align: center;">Partie</th>
+        <th style="text-align: center;">الإنتماء السياسي</th>
+        <th style="text-align: center;">الإسم الشخصي و العائلي</th>
+        <th style="text-align: center;">المرشح المؤهل</th>
+        <th style="text-align: center;">تأكيد مجموع الأصوات</th>
+        <th style="text-align: center;background-color: yellow;
+        ">المرشح 3</th>
+        <th style="text-align: center;background-color: yellow        ">المرشح 2</th>
+        <th style="text-align: center;background-color: yellow        ">المرشح 1</th>
+        <th style="text-align: center;background-color: blueviolet;        ">نسبة المشاركة</th>
+        <th style="text-align: center;">الأصوات المعبر عنها</th>
+        <th style="text-align: center;background-color: lightpink;">الأوراق الملغات</th>
+        <th style="text-align: center;background-color: lightpink;">المصوتين</th>
+        <th style="text-align: center;">المسجلين</th>
+        <th style="text-align: center;">رمز مكتب التصويت</th>
+        <th style="text-align: center;">رقم مكتب التصويت</th>
+        <th style="text-align: center;">الدائرة</th>
+      </tr>
+    </thead>
+    
       
 
     <tbody>
-
       <tr *ngFor="let p of elections; let i = index">
         <td><button (click)="onEditRNP(p)" class="btn btn-success"><i class="fa fa-pencil"></i></button></td>
+        <td  style="text-align: center;vertical-align: middle;">{{p.nbrPlaces}}</td>
         <td  style="text-align: center;vertical-align: middle;">{{p.partieWinner}}</td>
         <td  style="text-align: center;vertical-align: middle;">{{p.partieWinnerAr}}</td>
         <td  style="text-align: center;vertical-align: middle;">{{p.prenomWinner}} {{p.nomWinner}}</td>
         <td  style="text-align: center;vertical-align: middle;">{{p.numeroWinner}} </td>
-
-        <td [ngStyle]="{'background-color': p.confirmationSum === true ? 'green' : 
+        <td  [ngStyle]="{'background-color': p.confirmationSum === true || p.confirmationSum == null ? 'green' : 
         p.confirmationSum === false ? 'red' : 'white', 
 'text-align': 'center', 
 'vertical-align': 'middle'}">
-{{p.confirmationSum === true ? 'صحيح' : 'خطأ'}}
+ {{p.confirmationSum === true || p.confirmationSum==null  ? 'صحيح' : 'خطأ'}}
 </td>
 
-        <td  style="text-align: center;vertical-align: middle;">{{p.candidats[2].nombreVote }}</td>
-        <td  style="text-align: center;vertical-align: middle;">{{p.candidats[1].nombreVote }}</td>
-        <td  style="text-align: center;vertical-align: middle;">{{p.candidats[0].nombreVote }}</td>
-        <td  style="text-align: center;vertical-align: middle;">{{p.pourcentage}}</td>
+
+        <td  style="text-align: center;vertical-align: middle;background-color: yellow;">{{p.candidats[2].nombreVote }}</td>
+        <td  style="text-align: center;vertical-align: middle;background-color: yellow;">{{p.candidats[1].nombreVote }}</td>
+        <td  style="text-align: center;vertical-align: middle;background-color: yellow;">{{p.candidats[0].nombreVote }}</td>
+        <td  style="text-align: center;vertical-align: middle;background-color: blueviolet;    ">{{p.pourcentage}}</td>
         <td  style="text-align: center;vertical-align: middle;">{{p.voix}}</td>
-        <td  style="text-align: center;vertical-align: middle;">{{p.feuillesSupprimes}}</td>
-        <td  style="text-align: center;vertical-align: middle;">{{p.nmbMosa}}</td>
+        <td  style="text-align: center;vertical-align: middle;background-color: lightpink;">{{p.feuillesSupprimes}}</td>
+        <td  style="text-align: center;vertical-align: middle;background-color: lightpink;">{{p.nmbMosa}}</td>
         <td  style="text-align: center;vertical-align: middle;">{{p.nmbInscrits}}</td>
         <td  style="text-align: center;vertical-align: middle;">{{p.signeBureau}}</td>
         <td  style="text-align: center;vertical-align: middle;">{{p.numeroBureau}}</td>
-        <td  style="text-align: center;vertical-align: middle;">{{p.cercle?.num}}</td>
+        <td  style="text-align: center;vertical-align: middle;">{{p.cercle.num}}</td>
       </tr>
- 
-<!-- 
-      <tr>
-        <td colspan="9"></td>
+
+      <!-- <tr>
+        <td colspan="10"></td>
         <td>{{somPourcentage}}</td>
         <td>{{sommeVoix}}</td>
         <td>{{sommefeuilles}}</td>
