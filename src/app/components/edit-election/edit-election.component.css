@@ -1,0 +1,10 @@
+span,button{
+    font-weight: bold;
+}
+label{
+    display: block;
+    text-align: right;
+}
+input,select,option{
+    text-align: right;
+}

@@ -1,0 +1,82 @@
+<div class="container mx-auto">
+    <!-- {{currentAxe?.priorite}} -->
+ 
+    <button (click)="gotoList()" class="btn btn-primary" style="float: right;">لائحة المرشحين <i class="fa fa-arrow-right"></i></button> <br> <br>
+    <div class="card card-default  mx-auto">
+        <div class="card-header" style="text-align: center;font-size: 20px;">
+            مرشح ذو أولوية <span>{{currentAxe?.priorite}}</span> : عن الدائرة <span>{{cercle}}</span>   من جماعة <span>{{commune}}</span>
+        </div>
+        <div class="card-body">
+            <form #f="ngForm" (ngSubmit)="onUpdateAxe(f.value)" *ngIf="currentAxe">
+                <div class="form-group" hidden>
+                   
+                    <input type="text" name="priorite" ngModel  [(ngModel)]="currentAxe.priorite" class="form-control" hidden>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label  class="control-label">
+                                الإسم الشخصي
+                            </label>
+                            <input type="text" name="firstName" ngModel  [(ngModel)]="currentAxe.firstName" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label  class="control-label">
+                                الإسم العائلي
+                            </label>
+                            <input type="text" name="lastName" ngModel  [(ngModel)]="currentAxe.lastName" class="form-control">
+                        </div>
+                    </div>
+                </div>
+               
+             
+               <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label  class="control-label">
+                            تاريخ الميلاد
+                        </label>
+                        <input type="date" name="dateOfBirth" ngModel  [(ngModel)]="currentAxe.dateOfBirth" class="form-control">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label class="control-label">الإنتماء السياسي</label>
+                        
+                            <select  class="form-control mb-3" name="partieId" [(ngModel)]="partieId" (change)="onpartieChange($event)">
+                             <option *ngFor="let partie of parties"  [value]="partie.id" [selected]="partieId === partie.id">{{ partie.designation }} - {{ partie.designationArab }}</option>
+                         </select>
+                     
+                    </div>
+                </div>
+               </div>
+               
+                <div class="form-group" hidden>
+                    <label class="control-label">Gender</label>
+                    
+                        <select  class="form-control mb-3" name="communeId" [(ngModel)]="communeId" (change)="onCommuneChange($event)">
+                         <option *ngFor="let commune of communes"  [value]="commune.id" [selected]="communeId === commune.id">{{ commune.designation }}</option>
+                     </select>
+                 
+                </div>
+                <div class="form-group" hidden>
+                    <label class="control-label">Cercle</label>
+                    
+                        <select  class="form-control mb-3" name="cercleId" [(ngModel)]="cercleId" (change)="oncercleChange($event)">
+                         <option *ngFor="let cercle of cercles"  [value]="cercle.id" [selected]="cercleId === cercle.id">{{ cercle.num }}</option>
+                     </select>
+                 
+                </div>
+              
+                
+                
+              
+                <button class="btn btn-success" style="float: right;"  type="submit">تبديل</button>
+        
+            </form>
+        </div>
+       
+    </div>
+</div>

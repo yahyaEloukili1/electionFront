@@ -1,0 +1,89 @@
+<div class="container" >
+  
+   
+    <h2 style="text-align: center;"> مرشحو جماعة  {{communeName}}</h2>
+
+       <strong><label class="ml-2" style="margin-top: 0.5%;">الجماعة</label></strong> 
+        <select  class="form-control mb-3" [(ngModel)]="communeId" (change)="onCommuneChange($event)">
+      <strong></strong>  <option *ngFor="let commune of communes"  [value]="commune.id">{{ commune.designation }}</option>
+        </select>
+        <a (click)="search()" class="btn btn-primary mr-1"><i class="fa fa-search"></i></a>
+
+      
+      
+  <table class="table table-bordered table-sm mt-3" *ngIf="candidats">
+    <thead style="background-color: #d9d9d9;">
+
+        <tr>
+
+          <th style="width:10%; text-align: center; ">
+           
+           
+          </th>
+          <th style="width:10%; text-align: center; ">
+            Partie
+            <span style="display: inline-block; width: 5px;"></span>
+            <i class="fa fa-flag text-primary"></i>
+          </th>
+          <th style="width:10%; text-align: center; ">
+            الانتماء السياسي
+            <span style="display: inline-block; width: 5px;"></span>
+            <i class="fa fa-flag text-primary"></i>
+          </th>
+          <th style="width:10%; text-align: center;">
+            السن
+            <span style="display: inline-block; width: 5px;"></span>
+            <i class="fa fa-birthday-cake text-primary"></i>
+          </th>
+          <th style="width:10%; text-align: center;">
+            تاريخ الإزدياد
+            <span style="display: inline-block; width: 5px;"></span>
+            <i class="fa fa-birthday-cake text-primary"></i>
+          </th>
+          <th style="width:10%; text-align: center;">
+            الإسم العائلي
+            <span style="display: inline-block; width: 5px;"></span>
+            <i class="fa fa-user text-primary"></i>
+          </th>
+          <th style="width:10%; text-align: center;">
+            الإسم الشخصي
+            <span style="display: inline-block; width: 5px;"></span>
+            <i class="fa fa-id-card text-primary"></i>
+          </th>
+          <th style="width:10%; text-align: center;">
+            المرشح
+            <span style="display: inline-block; width: 5px;"></span>
+            <i class="fa fa-briefcase text-primary"></i>
+          </th>
+          <th style="width:10%; text-align: center;">
+            الدائرة
+            <span style="display: inline-block; width: 5px;"></span>
+            <i class="fa fa-circle text-primary"></i>
+          </th>
+        
+
+        </tr>
+      </thead>
+      
+
+    <tbody>
+      <tr *ngFor="let p of candidats; let i = index">
+        <td><button (click)="onEditRNP(p)" class="btn btn-success"><i class="fa fa-pencil"></i></button></td>
+        <td>{{p.partie?.designation}}</td>
+        <td>{{p.partie?.designationArab}}</td>
+        <td>{{p.age != 0 ? p.age : ''}}</td>
+        <td>{{p.dateOfBirth | date:'dd/MM/yyyy'}}</td>
+        <td>{{p.lastName}}</td>
+        <td>{{p.firstName}}</td>
+        <td>{{p.priorite}}</td>
+        <td *ngIf="i % 3 == 0" rowspan="3" style="border-bottom: none;text-align: center;vertical-align: middle;">{{p.cercle.num}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+
+
+
+
+   

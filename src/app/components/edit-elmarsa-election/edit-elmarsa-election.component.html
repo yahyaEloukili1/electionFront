@@ -1,0 +1,96 @@
+<div class="container mx-auto">
+    <button (click)="gotoList()" class="btn btn-primary" style="float: right;">لائحة المرشحين <i class="fa fa-arrow-right"></i> </button> <br> <br>
+    <div class="card card-default  mx-auto">
+        <div class="card-header" style="text-align: center;font-size: 20px;">
+            عن الدائرة <span>{{cercle}}</span>   من جماعة <span>{{commune}}</span>
+        </div>
+        <div class="card-body">
+            <form #f="ngForm" (ngSubmit)="onUpdateAxe(f.value)" *ngIf="currentAxe">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label  class="control-label">
+                                رقم مكتب التصويت
+                            </label>
+                            <input type="text" name="numeroBureau" ngModel  [(ngModel)]="currentAxe.numeroBureau" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label  class="control-label">
+                                رمز مكتب التصويت
+                            </label>
+                            <input type="text" name="signeBureau" ngModel  [(ngModel)]="currentAxe.signeBureau" class="form-control">
+                        </div>
+                    </div>
+                </div>
+             
+               <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label  class="control-label">
+                            المسجلين
+                        </label>
+                        <input type="text" name="nmbInscrits" ngModel  [(ngModel)]="currentAxe.nmbInscrits" class="form-control">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label  class="control-label">
+                            المصوتين
+                        </label>
+                        <input type="text" name="nmbMosa" ngModel  [(ngModel)]="currentAxe.nmbMosa" class="form-control">
+                    </div>
+                </div>
+               </div>
+               
+               <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label  class="control-label">
+                            المرشح 1
+                        </label>
+                        <input type="number" name="nb1" ngModel [(ngModel)]="nb1"  class="form-control">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label  class="control-label">
+                            الأوراق الملغات
+                        </label>
+                        <input type="text" name="feuillesSupprimes" ngModel  [(ngModel)]="currentAxe.feuillesSupprimes" class="form-control">
+                    </div>
+                </div>
+              
+               </div>
+            
+              <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label  class="control-label">
+                            المرشح 3
+                        </label>
+                        <input type="number" name="nb3" ngModel [(ngModel)]="nb3"  class="form-control">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label  class="control-label">
+                            المرشح 2
+                        </label>
+                        <input type="number" name="nb2" ngModel [(ngModel)]="nb2"  class="form-control">
+                    </div>
+                </div>
+              
+              </div>
+              
+               
+                
+              
+                <button class="btn btn-success" style="float: right;" type="submit">تبديل</button>
+        
+            </form>
+        </div>
+       
+    </div>
+</div>
