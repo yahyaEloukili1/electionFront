@@ -1,0 +1,47 @@
+<div class="container mt-5" id="container" >
+  
+ 
+
+<table class="table table-sm" style="border: 0px;" *ngIf="elections1">
+<tr></tr>
+    <tr>
+      <td>العيون</td>
+      <td>عمالة أو إقليم أو عمالة المقاطعات</td>
+      <td>العيون الساقية الحمراء</td>
+      <td>جهة </td>
+    </tr>
+    <tr> 
+      <td>{{elections1.cercle?.num}}</td>
+      <td>الدائرة الإنتخابية</td>
+      <td>{{communeName}}</td>
+      <td>جماعة أو مقاطعة</td>
+    </tr>
+    <tr>
+       <td>فردي</td>
+      <td>نوعية الإقتراع</td>
+      <td>{{elections1.nbrPlaces}}</td>
+      <td>عدد المقاعد</td>
+    </tr>
+    <tr>
+       <td>{{elections1.numeroBureau}}</td>
+       <td>رقم مكتب التصويت</td>
+      <td>{{elections1.signeBureau}}</td>
+      <td>رمز مكتب التصويت</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>{{elections1.addressBureau}}</td>
+      <td>عنوان مكتب التصويت</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>{{elections1.lieuBureau}}</td>
+      <td>مكان مكتب التصويت</td>
+    </tr>
+ 
+</table>
+  
+  
+     

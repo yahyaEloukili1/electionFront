@@ -101,7 +101,7 @@ console.log(this.url,"poeoeoeoeoeoeoeo")
       
            }
            console.log(this.obj,"44444444444444444444444444444444444444444444444444444444444444444")
-    
+    console.log(data1['_embedded'].election.idOfWinner,"aaaaaaaaaaaaaaaaaaaaaaaa")
   if(data1['_embedded'].election.idOfWinner ==this.id){
     this.pdiService.updateResource(`${this.pdiService.host}/elections/${data1['_embedded'].election.id}`,this.obj).subscribe(data=>{
   

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 import { RnpService } from 'src/app/services/rnp-service.service';
 
 @Component({
@@ -8,7 +10,6 @@ import { RnpService } from 'src/app/services/rnp-service.service';
   styleUrls: ['./edit-elmarsa-election.component.css']
 })
 export class EditElmarsaElectionComponent implements OnInit {
-
   currentAxe: any
   url: string
   communes
@@ -31,6 +32,7 @@ export class EditElmarsaElectionComponent implements OnInit {
   partie3: any;
   commune
   cercle
+  edit: number;
     constructor(private router:Router,private activatedRoute: ActivatedRoute,private pdiService:RnpService) { }
   
     ngOnInit(): void {
@@ -80,6 +82,7 @@ export class EditElmarsaElectionComponent implements OnInit {
      })
    }
     onUpdateAxe(value: any){
+      this.edit =1
       console.log(value,'nnnnnnnnnnnnnnn')
       // this.pdiService.getResourceById("parties",1).subscribe(data=>{
       //   value.partie = data
@@ -95,66 +98,78 @@ export class EditElmarsaElectionComponent implements OnInit {
       }else{
         value.confirmationSum = false
       }
-      let max = Math.max(value.nb1, value.nb2, value.nb3);
+      if(value.confirmationSum==true){
+        let max = Math.max(value.nb1, value.nb2, value.nb3);
      
-      if((value.nb1 == value.nb2) && (value.nb1 == value.nb3)&&(value.nb3 == value.nb2)){
-        let min = Math.min(this.candidat1.age,this.candidat2.age,this.candidat3.age);
-        console.log(min,"22222222222222222222222222222")
-        if(min==this.candidat1.age){
-          value.idOfWinner=this.candidat1.id 
-          value.nomWinner =this.candidat1.lastName
-          value.prenomWinner =this.candidat1.firstName
-          value.numeroWinner = 1
-          value.partieWinner = this.partie1?.designation
-          value.partieWinnerAr = this.partie1?.designationArab
-           
-          
-        }else if(min==this.candidat2.age){
-          value.idOfWinner=this.candidat2.id 
-          value.nomWinner =this.candidat2.lastName
-          value.prenomWinner =this.candidat2.firstName
-          value.numeroWinner = 2
-          value.partieWinner = this.partie2?.designation
-          value.partieWinnerAr = this.partie2?.designationArab
-        }else{
-          value.idOfWinner=this.candidat3.id 
-          value.nomWinner =this.candidat3.lastName
-          value.prenomWinner =this.candidat3.firstName
-          value.partieWinner = this.partie3?.designation
-          value.partieWinnerAr = this.partie3?.designationArab
-          value.numeroWinner = 2
+        if((value.nb1 == value.nb2) && (value.nb1 == value.nb3)&&(value.nb3 == value.nb2)){
+          let min = Math.min(this.candidat1.age,this.candidat2.age,this.candidat3.age);
+          console.log(min,"22222222222222222222222222222")
+          if(min==this.candidat1.age){
+            value.idOfWinner=this.candidat1.id 
+            value.nomWinner =this.candidat1.lastName
+            value.prenomWinner =this.candidat1.firstName
+            value.numeroWinner = 1
+            value.partieWinner = this.partie1?.designation
+            value.partieWinnerAr = this.partie1?.designationArab
+             
+            
+          }else if(min==this.candidat2.age){
+            value.idOfWinner=this.candidat2.id 
+            value.nomWinner =this.candidat2.lastName
+            value.prenomWinner =this.candidat2.firstName
+            value.numeroWinner = 2
+            value.partieWinner = this.partie2?.designation
+            value.partieWinnerAr = this.partie2?.designationArab
+          }else{
+            value.idOfWinner=this.candidat3.id 
+            value.nomWinner =this.candidat3.lastName
+            value.prenomWinner =this.candidat3.firstName
+            value.partieWinner = this.partie3?.designation
+            value.partieWinnerAr = this.partie3?.designationArab
+            value.numeroWinner = 2
+          }
         }
+        else{
+          if(value.nb1==0&&value.nb2==0&&value.nb3==0){
+  
+          }
+          else{
+            console.log(this.candidat1.partie.designation,"**************************************************************aaa")
+            if(max==value.nb1){
+              value.idOfWinner=this.candidat1.id 
+              value.nomWinner =this.candidat1.lastName
+              value.prenomWinner =this.candidat1.firstName
+              value.numeroWinner = 1
+              value.partieWinner = this.candidat1?.partie?.designation
+              value.partieWinnerAr = this.candidat1?.partie?.designationArab
+               
+              
+            }else if(max==value.nb2){
+              value.idOfWinner=this.candidat2.id 
+              value.nomWinner =this.candidat2.lastName
+              value.prenomWinner =this.candidat2.firstName
+              value.numeroWinner = 2
+              value.partieWinner = this.candidat2?.partie?.designation
+              value.partieWinnerAr = this.candidat2?.partie?.designationArab
+            }else{
+              console.log(this.candidat3,"**************************************************************aaa")
+  
+              value.idOfWinner=this.candidat3.id 
+              value.nomWinner =this.candidat3.lastName
+              value.prenomWinner =this.candidat3.firstName
+              value.partieWinner = this.candidat3?.partie?.designation
+              value.partieWinnerAr = this.candidat3?.partie?.designationArab
+              value.numeroWinner = 3
+            }
+          }
+     
       }
-      else{
-      if(max==value.nb1){
-        value.idOfWinner=this.candidat1.id 
-        value.nomWinner =this.candidat1.lastName
-        value.prenomWinner =this.candidat1.firstName
-        value.numeroWinner = 1
-        value.partieWinner = this.partie1?.designation
-        value.partieWinnerAr = this.partie1?.designationArab
-         
-        
-      }else if(max==value.nb2){
-        value.idOfWinner=this.candidat2.id 
-        value.nomWinner =this.candidat2.lastName
-        value.prenomWinner =this.candidat2.firstName
-        value.numeroWinner = 2
-        value.partieWinner = this.partie2?.designation
-        value.partieWinnerAr = this.partie2?.designationArab
-      }else{
-        value.idOfWinner=this.candidat3.id 
-        value.nomWinner =this.candidat3.lastName
-        value.prenomWinner =this.candidat3.firstName
-        value.partieWinner = this.partie3?.designation
-        value.partieWinnerAr = this.partie3?.designationArab
-        value.numeroWinner = 2
       }
-    }
+    
       console.log(value,'èèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèèè')
       this.pdiService.updateResource(this.url,value).subscribe(data=>{
           
-         alert("Mise a jour effectuée avec succès")
+        alert("Mise a jour effectuée avec succès")
       },err=>{
         
       })
@@ -199,6 +214,7 @@ export class EditElmarsaElectionComponent implements OnInit {
       this.idchanged = event.target.value
       
     }
+  
     oncercleChange(event){
       this.idchanged2 = event.target.value
     }
@@ -208,6 +224,7 @@ export class EditElmarsaElectionComponent implements OnInit {
     gotoList(){
       this.router.navigateByUrl('elections/electionElmarsa');
     }
+
 
 
 }

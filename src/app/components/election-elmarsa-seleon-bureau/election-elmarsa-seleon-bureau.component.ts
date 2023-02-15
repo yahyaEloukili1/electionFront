@@ -5,11 +5,11 @@ import { RnpService } from 'src/app/services/rnp-service.service';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 @Component({
-  selector: 'app-election-elmarsa',
-  templateUrl: './election-elmarsa.component.html',
-  styleUrls: ['./election-elmarsa.component.css']
+  selector: 'app-election-elmarsa-seleon-bureau',
+  templateUrl: './election-elmarsa-seleon-bureau.component.html',
+  styleUrls: ['./election-elmarsa-seleon-bureau.component.css']
 })
-export class ElectionElmarsaComponent implements OnInit {
+export class ElectionElmarsaSeleonBureauComponent implements OnInit {
   elections
   communeName
   communes
@@ -23,6 +23,7 @@ export class ElectionElmarsaComponent implements OnInit {
   somenmbMosa: any;
   somPourcentage
   someInscrits: number;
+  elections1: any;
   constructor(private rnpService:RnpService,private router:Router,private activatedRoute: ActivatedRoute,private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -31,6 +32,7 @@ export class ElectionElmarsaComponent implements OnInit {
       console.log(data['_embedded'])
 
      this.elections = data['_embedded'].elections
+     this.elections1= data['_embedded'].elections[0]
      console.log(this.elections,'0ààààààààààààààààààààààààààààààààààààààààààà3333333333333333333333333333333333333333333333333')
      this.communeName = this.elections[0].commune?.designation
      this.communeId = this.elections[0].commune?.id
@@ -79,5 +81,6 @@ export class ElectionElmarsaComponent implements OnInit {
     let url = p['_links'].self.href;
     this.router.navigateByUrl("elections/editElectionElmarsa/"+btoa(url))
 }
+
 
 }

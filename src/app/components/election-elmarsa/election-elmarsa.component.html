@@ -1,12 +1,18 @@
-<div class="container1 mt-5" >
+<div class="container1 mt-5" id="container" >
   
-   
- 
+  <button (click)="generatePDF2()">pdf</button>
+  <h2 style="text-align: center;"> مرشحو جماعة  {{communeName}}</h2>
+<!-- 
+  <strong><label class="ml-2" style="margin-top: 0.5%;">الجماعة</label></strong> 
+   <select  class="form-control mb-3" [(ngModel)]="communeId" (change)="onCommuneChange($event)">
+ <strong></strong>  <option *ngFor="let commune of communes"  [value]="commune.id">{{ commune.designation }}</option>
+   </select>
+   <a (click)="search()" class="btn btn-primary mr-1"><i class="fa fa-search"></i></a> -->
 
 
       
       
-  <table class="table table-bordered table-sm mt-3" *ngIf="elections">
+  <table class="table table-bordered table-sm mt-3" id="table" *ngIf="elections">
     <thead style="background-color: #d9d9d9;">
       <tr>
         <th style="text-align: center;">Actions</th>
@@ -40,14 +46,16 @@
         <td  style="text-align: center;vertical-align: middle;">{{p.partieWinner}}</td>
         <td  style="text-align: center;vertical-align: middle;">{{p.partieWinnerAr}}</td>
         <td  style="text-align: center;vertical-align: middle;">{{p.prenomWinner}} {{p.nomWinner}}</td>
-        <td  style="text-align: center;vertical-align: middle;">{{p.numeroWinner}} </td>
+        <td  style="text-align: center;vertical-align: middle;">{{p.numeroWinner!=0  ? p.numeroWinner: ''}} </td>
+
+        
+
         <td  [ngStyle]="{'background-color': p.confirmationSum === true || p.confirmationSum == null ? 'green' : 
         p.confirmationSum === false ? 'red' : 'white', 
 'text-align': 'center', 
 'vertical-align': 'middle'}">
  {{p.confirmationSum === true || p.confirmationSum==null  ? 'صحيح' : 'خطأ'}}
 </td>
-
 
         <td  style="text-align: center;vertical-align: middle;background-color: yellow;">{{p.candidats[2].nombreVote }}</td>
         <td  style="text-align: center;vertical-align: middle;background-color: yellow;">{{p.candidats[1].nombreVote }}</td>

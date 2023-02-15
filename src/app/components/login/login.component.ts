@@ -15,7 +15,7 @@ mode = 0
   ngOnInit(): void {
     console.log(this.pdiService.loadToken(),"$$$$$$$$$$$")
     if(this.pdiService.jwtToken){
-      this.router.navigateByUrl("situations/elections")
+      this.router.navigateByUrl("elections/elections")
     }
   }
   onSubmit(f:NgForm){

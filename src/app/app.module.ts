@@ -14,6 +14,7 @@ import { ElectionsComponent } from './components/elections/elections.component';
 import { EditElectionComponent } from './components/edit-election/edit-election.component';
 import { ElectionElmarsaComponent } from './components/election-elmarsa/election-elmarsa.component';
 import { EditElmarsaElectionComponent } from './components/edit-elmarsa-election/edit-elmarsa-election.component';
+import { ElectionElmarsaSeleonBureauComponent } from './components/election-elmarsa-seleon-bureau/election-elmarsa-seleon-bureau.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { EditElmarsaElectionComponent } from './components/edit-elmarsa-election
     ElectionsComponent,
     EditElectionComponent,
     ElectionElmarsaComponent,
-    EditElmarsaElectionComponent
+    EditElmarsaElectionComponent,
+    ElectionElmarsaSeleonBureauComponent
   ],
   imports: [
     BrowserModule,

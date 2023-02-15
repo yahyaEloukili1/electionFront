@@ -13,7 +13,9 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
        
         <ul class="navbar-nav">
-         
+          <li class="nav-item" *ngIf="pdiService.jwtToken">
+            <a class="nav-link" [routerLink]="['elections/electionElmarsaSelonBureau']" [routerLinkActive]="['is-active']">  bureabu الإنتخابات الفردية للمرسى 15</a>
+          </li>   
           <li class="nav-item" *ngIf="pdiService.jwtToken">
             <a class="nav-link" [routerLink]="['elections/electionElmarsa']" [routerLinkActive]="['is-active']">  الإنتخابات الفردية للمرسى 15</a>
           </li>  

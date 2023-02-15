@@ -4,9 +4,19 @@
         <div class="card-header" style="text-align: center;font-size: 20px;">
             عن الدائرة <span>{{cercle}}</span>   من جماعة <span>{{commune}}</span>
         </div>
+        
         <div class="card-body">
             <form #f="ngForm" (ngSubmit)="onUpdateAxe(f.value)" *ngIf="currentAxe">
                 <div class="row">
+                 
+                    <div class="col">
+                        <div class="form-group">
+                            <label  class="control-label">
+                                رمز مكتب التصويت
+                            </label>
+                            <input type="text" name="signeBureau" ngModel  [(ngModel)]="currentAxe.signeBureau" class="form-control">
+                        </div>
+                    </div>
                     <div class="col">
                         <div class="form-group">
                             <label  class="control-label">
@@ -15,12 +25,22 @@
                             <input type="number" name="numeroBureau" ngModel  [(ngModel)]="currentAxe.numeroBureau" class="form-control">
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col">
                         <div class="form-group">
                             <label  class="control-label">
-                                رمز مكتب التصويت
+                                عنوان مكتب التصويت
                             </label>
-                            <input type="text" name="signeBureau" ngModel  [(ngModel)]="currentAxe.signeBureau" class="form-control">
+                            <input type="text" name="addressBureau" ngModel  [(ngModel)]="currentAxe.addressBureau" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label  class="control-label">
+                                مكان مكتب التصويت
+                            </label>
+                            <input type="text" name="lieuBureau" ngModel  [(ngModel)]="currentAxe.lieuBureau" class="form-control">
                         </div>
                     </div>
                 </div>
